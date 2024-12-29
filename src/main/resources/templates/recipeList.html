@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe List</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+
+<body>
+
+    <h1>Here are the list of meals you could consider making :) </h1>
+    <div id="recipe-list">
+
+        <div th:each="recipe : ${recipes}">
+            <div class="recipe">
+                <!-- Update the references to match the property names in the Recipe class -->
+                <div id="recipe-thumbnail">
+                    <img th:src="${recipe.mealThumbnail}" th:alt="${recipe.mealName}" class="recipe-thumbnail">
+                </div>
+                <div class="recipe-info">
+                    <h2 th:text="${recipe.mealName}"></h2>
+                    <p><strong>Meal ID:</strong>
+                        <a th:href="@{/recipes/details/{id}(id=${recipe.idMeal})}" th:text="${recipe.idMeal}"></a>
+                        <!-- <span th:text="${recipe.idMeal}"></span></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <a href="/homepage" class="btn">Back to Homepage</a>
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="/errorstyle.css">
+</head>
+
+<body>
+    <div class="error-container">
+        <h1>An Error Occurred</h1>
+        <p><strong>Error Type:</strong> <span th:text="${errorType}">Error type here</span></p>
+        <p><strong>Error Message:</strong> <span th:text="${errorMessage}">Error message here</span></p>
+        <p class="timestamp"><strong>Time:</strong> <span th:text="${currentTime}">Current time here</span></p>
+    </div>
+
+    <div class="buttons-container">
+        <div class="homepage">
+            <button type="submit">
+                <a href="/homepage" class="btn">Back to Homepage</a>
+            </button>
+        </div>
+
+        <div class="buttons-container">
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>

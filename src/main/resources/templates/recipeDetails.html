@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="/style.css"> <!-- Link to your stylesheet -->
+</head>
+
+<body>
+
+    <form action="/recipes/favorites" method="post">
+        <div class="container">
+            <h1>Recipe Details</h1>
+
+            <div class="recipe-details">
+                <div class="recipe-header">
+                    <img th:src="${meal.mealThumbnail}" alt="Recipe Thumbnail" class="recipe-thumbnail-large">
+                    <h2 th:text="${meal.mealName}"></h2>
+                </div>
+
+                <div class="ingredients">
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        <!-- <li th:each="ingredient : ${meal.ingredients}" 
+                    th:text="${ingredient}"></li> -->
+                        <li th:each="ingredient, iterStat : ${meal.ingredients}">
+                            <span th:text="${ingredient}"></span> -
+                            <span th:text="${meal.measurements[iterStat.index]}"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="instructions">
+                    <h3>Instructions:</h3>
+                    <p th:text="${meal.instructions}"></p>
+                </div>
+
+                <div th:if="${meal.youtubeLink != null}">
+                    <h3>Watch Recipe Video:</h3>
+                    <a th:href="${meal.youtubeLink}" target="_blank">Watch on YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="username" value="${username}">
+        <input type="hidden" name="idMeal" value="${meal.idMeal}">
+
+        <div class="recipe-actions">
+            <form th:action="@{/recipes/favorites}" method="post">
+                <input type="hidden" name="idMeal" th:value="${meal.idMeal}">
+                <button type="submit" class="btn btn-primary">Add to Favorites</button>
+            </form>
+        </div>
+
+        <div class="buttons-container">
+            <a href="/homepage" class="btn">Back to Homepage</a>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+</body>
+
+</html>

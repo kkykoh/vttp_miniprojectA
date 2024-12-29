@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your Favorites</h1>
+
+        <div th:if="${error}">
+            <p class="error-message" th:text="${error}"></p>
+        </div>
+        <div th:if="${message}">
+            <p class="success-message" th:text="${message}"></p>
+        </div>
+
+        <ul>
+            <li th:each="idMeal : ${favorites}">
+                <a th:href="@{/recipes/details/{idMeal}(idMeal=${idMeal})}" th:text="${idMeal}"></a>
+            </li>
+        </ul>
+
+        <div class="buttons-container">
+            <a href="/homepage" class="btn">Back to Homepage</a>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>

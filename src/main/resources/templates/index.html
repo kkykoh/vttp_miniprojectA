@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div>
+        <h1>Hello <span th:text="${username}"></span></h1>
+    </div>
+    <div class="container">
+        <h1>Recipe Finder</h1>
+        <div class="row">
+            <a href="/search" class="card text-center">
+                <h5 class="card-title">Find Recipes by Ingredient</h5>
+            </a>
+            <a href="/searchName" class="card text-center">
+                <h5 class="card-title">Find Recipes by Name</h5>
+            </a>
+            <a href="/recipes/favorites" class="card text-center">
+                <h5 class="card-title">View Favorites</h5>
+            </a>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <a href="/logout" class="btn">Logout</a>
+    </div>
+
+</body>
+</html>
+
